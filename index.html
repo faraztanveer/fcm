@@ -1,89 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-  <link rel="manifest" href="/manifest.json">
-  <title>push noti</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="manifest" href="manifest.json">
+    <link rel="shortcut icon" href="favicon.ico">
+    <title>FCM Demo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 <body>
-
-<h2>push noti</h2>
-
-
+    <h1 style="text-align:center;">
+        Firebase Cloud Messaging Demo
+    </h1>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase-messaging.js"></script>
+    <script src="script.js"></script>
 </body>
-
-<!-- Insert this script at the bottom of the HTML, but before you use any Firebase services -->
-
-<!-- Add the entire Firebase JavaScript SDK -->
-<script src="https://www.gstatic.com/firebasejs/6.3.1/firebase.js"></script>
-
-<script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-        apiKey: "AIzaSyCbLwreh-1sDisv06h13lhUnMkt-Ju-7YI",
-        authDomain: "test-f6586.firebaseapp.com",
-        databaseURL: "https://test-f6586.firebaseio.com",
-        projectId: "test-f6586",
-        storageBucket: "",
-        messagingSenderId: "499442820366",
-        appId: "1:499442820366:web:987c398e2f004953"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-
-    const messaging = firebase.messaging;
-
-
-    Notification.requestPermission().then((permission) => {
-
-
-        if (permission === 'granted') {
-            console.log('Notification permission granted.');
-
-            getToken()
-
-        } else {
-            console.log('Unable to get permission to notify.');
-        }
-    });
-
-
-    // Get Instance ID token. Initially this makes a network call, once retrieved
-    // subsequent calls to getToken will return from cache.
-    function getToken() {
-        messaging.usePublicVapidKey('<BFo8Bj7cFsv38eSom1XdTGreRI3KJA7IWJ3lP6siHv6xQmydRiaYrt8oh9ykGWB_7ceY0YaHCY_0xb9ZJz9n0YE>');
-        return;
-        // Get Instance ID token. Initially this makes a network call, once retrieved
-// subsequent calls to getToken will return from cache.
-        messaging.getToken().then(function (currentToken) {
-            if (currentToken) {
-                console.log(currentToken);
-                // updateUIForPushEnabled(currentToken);
-            } else {
-                // Show permission request.
-                console.log('No Instance ID token available. Request permission to generate one.');
-                // Show permission UI.
-                // updateUIForPushPermissionRequired();
-                setTokenSentToServer(false);
-            }
-        }).catch(function (err) {
-            console.log('An error occurred while retrieving token. ', err);
-            showToken('Error retrieving Instance ID token. ', err);
-            setTokenSentToServer(false);
-        });
-
-        function setTokenSentToServer(sent) {
-            window.localStorage.setItem('sentToServer', sent ? '1' : '0');
-        }
-
-    }
-
-
-</script>
-
 </html>
