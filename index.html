@@ -56,7 +56,8 @@
     // Get Instance ID token. Initially this makes a network call, once retrieved
     // subsequent calls to getToken will return from cache.
     function getToken() {
-
+        messaging.usePublicVapidKey('<BFo8Bj7cFsv38eSom1XdTGreRI3KJA7IWJ3lP6siHv6xQmydRiaYrt8oh9ykGWB_7ceY0YaHCY_0xb9ZJz9n0YE>');
+        return;
         // Get Instance ID token. Initially this makes a network call, once retrieved
 // subsequent calls to getToken will return from cache.
         messaging.getToken().then(function (currentToken) {
