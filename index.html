@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 
- <meta charset="UTF-8">
- <meta name="viewport"
-       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
- <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
- <link rel="manifest" href="/manifest.json">
- <title>push noti</title>
+  <link rel="manifest" href="/manifest.json">
+  <title>push noti</title>
 </head>
 <body>
 
@@ -45,7 +45,7 @@
         if (permission === 'granted') {
             console.log('Notification permission granted.');
 
-            // getToken()
+            getToken()
 
         } else {
             console.log('Unable to get permission to notify.');
@@ -53,10 +53,11 @@
     });
 
 
-
     // Get Instance ID token. Initially this makes a network call, once retrieved
     // subsequent calls to getToken will return from cache.
     function getToken() {
+        console.log(messaging);
+        return ;
         // Get Instance ID token. Initially this makes a network call, once retrieved
 // subsequent calls to getToken will return from cache.
         messaging.getToken().then(function (currentToken) {
