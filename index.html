@@ -62,12 +62,12 @@
         messaging.getToken().then(function (currentToken) {
             if (currentToken) {
                 console.log(currentToken);
-                updateUIForPushEnabled(currentToken);
+                // updateUIForPushEnabled(currentToken);
             } else {
                 // Show permission request.
                 console.log('No Instance ID token available. Request permission to generate one.');
                 // Show permission UI.
-                updateUIForPushPermissionRequired();
+                // updateUIForPushPermissionRequired();
                 setTokenSentToServer(false);
             }
         }).catch(function (err) {
